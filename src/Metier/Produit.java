@@ -14,12 +14,19 @@ public class Produit implements I_Produit{
 
     @Override
     public boolean ajouter(int qteAchetee) {
-        return false;
+        this.quantiteStock += qteAchetee;
+        return true;
     }
 
     @Override
     public boolean enlever(int qteVendue) {
-        return false;
+        if(this.quantiteStock-qteVendue >= 0){
+            this.quantiteStock -= qteVendue;
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     @Override
@@ -44,11 +51,11 @@ public class Produit implements I_Produit{
 
     @Override
     public double getPrixStockTTC() {
-        return 0;
+        return ((prixUnitaireHT*tauxTVA)+prixUnitaireHT)*quantiteStock;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "le produit "+ this.nom +" coute " +this.prixUnitaireHT +" HT et est en " +this.quantiteStock +" exemplaire.";
     }
 }
