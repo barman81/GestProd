@@ -37,6 +37,7 @@ public class Catalogue implements I_Catalogue {
                 lesProduits.remove(unProduit);
             }
         }
+        //TODO: attention au return : return false si produit pas trouvé dans la liste !
         return true;
     }
 
