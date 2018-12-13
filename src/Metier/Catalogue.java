@@ -1,5 +1,6 @@
 package Metier;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Catalogue implements I_Catalogue {
@@ -10,14 +11,18 @@ public class Catalogue implements I_Catalogue {
 
     @Override
     public boolean addProduit(I_Produit produit) {
-        lesProduits
         return false;
     }
 
     @Override
     public boolean addProduit(String nom, double prix, int qte) {
-        Produit p1 = new Produit(nom, prix, qte);
-        return true;
+        if(!lesProduits.contains(nom)){
+            Produit p1 = new Produit(nom, prix, qte);
+            lesProduits.add(p1);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -27,7 +32,12 @@ public class Catalogue implements I_Catalogue {
 
     @Override
     public boolean removeProduit(String nom) {
-        return false;
+        for (I_Produit unProduit : lesProduits) {
+            if (nom.equals(unProduit.getNom())) {
+                lesProduits.remove(unProduit);
+            }
+        }
+        return true;
     }
 
     @Override
