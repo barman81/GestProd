@@ -1,4 +1,4 @@
-package GestionProduits;
+package Affichage;
 
 public class Main {
 

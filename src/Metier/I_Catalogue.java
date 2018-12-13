@@ -1,4 +1,6 @@
-import java.util.List; 
+package Metier;
+
+import java.util.List;
 
 public interface I_Catalogue {
 
