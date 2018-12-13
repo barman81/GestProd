@@ -1,22 +1,23 @@
 package Metier;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Catalogue implements I_Catalogue {
+    private ArrayList<I_Produit> lesProduits = new ArrayList<I_Produit>();
 
     public Catalogue(){
-
     }
 
     @Override
     public boolean addProduit(I_Produit produit) {
+        lesProduits
         return false;
     }
 
     @Override
     public boolean addProduit(String nom, double prix, int qte) {
-
-        return false;
+        Produit p1 = new Produit(nom, prix, qte);
+        return true;
     }
 
     @Override
@@ -58,4 +59,5 @@ public class Catalogue implements I_Catalogue {
     public void clear() {
 
     }
+
 }
