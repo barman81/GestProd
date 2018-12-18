@@ -11,7 +11,8 @@ public class Catalogue implements I_Catalogue {
 
     @Override
     public boolean addProduit(I_Produit produit) {
-        return false;
+        lesProduits.add(produit);
+        return true;
     }
 
     @Override
@@ -27,48 +28,73 @@ public class Catalogue implements I_Catalogue {
 
     @Override
     public int addProduits(List<I_Produit> l) {
-        return 0;
+        lesProduits.addAll(l);
+        return l.size();
     }
 
     @Override
     public boolean removeProduit(String nom) {
-        for (I_Produit unProduit : lesProduits) {
-            if (nom.equals(unProduit.getNom())) {
-                lesProduits.remove(unProduit);
+        if(lesProduits.contains((nom))) {
+            for (I_Produit unProduit : lesProduits) {
+                if (nom.equals(unProduit.getNom())) {
+                    lesProduits.remove(unProduit);
+                    return true;
+                }
             }
         }
-        //TODO: attention au return : return false si produit pas trouvé dans la liste !
-        return true;
+            return false;
     }
 
     @Override
     public boolean acheterStock(String nomProduit, int qteAchetee) {
+        if(lesProduits.contains((nomProduit))) {
+            I_Produit unProduit = lesProduits.get(lesProduits.indexOf(nomProduit));
+            unProduit.ajouter(qteAchetee);
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean vendreStock(String nomProduit, int qteVendue) {
+        if(lesProduits.contains((nomProduit))) {
+            I_Produit unProduit = lesProduits.get(lesProduits.indexOf(nomProduit));
+            if(unProduit.getQuantite() >= qteVendue) {
+                unProduit.enlever(qteVendue);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public String[] getNomProduits() {
-        return new String[0];
+        String noms[] = {};
+        int i=0;
+        for(I_Produit unProduit :lesProduits){
+            noms[i] =(unProduit.getNom());
+            i++;
+        }
+        return noms;
     }
 
     @Override
     public double getMontantTotalTTC() {
-        return 0;
+        double montant = 0;
+        for(I_Produit unProduit :lesProduits){
+            montant += unProduit.getPrixStockTTC();
+        }
+        return montant;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "la liste de produit contients : " + lesProduits;
     }
 
     @Override
     public void clear() {
-
+        lesProduits.removeAll(lesProduits);
     }
 
 }
