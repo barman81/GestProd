@@ -59,7 +59,7 @@ public class Catalogue implements I_Catalogue {
     public boolean vendreStock(String nomProduit, int qteVendue) {
         if(lesProduits.contains((nomProduit))) {
             I_Produit unProduit = lesProduits.get(lesProduits.indexOf(nomProduit));
-            if(unProduit.getQuantite() >= qteVendue) {
+            if(unProduit.getQuantite() >= qteVendue && unProduit.getQuantite() !=0) {
                 unProduit.enlever(qteVendue);
                 return true;
             }
