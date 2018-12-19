@@ -1,3 +1,5 @@
+package Affichage;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -22,7 +24,7 @@ public class FenetreAchat extends JFrame implements ActionListener {
 		combo.setPreferredSize(new Dimension(100, 20));
 		contentPane.add(new JLabel("Produit"));
 		contentPane.add(combo);
-		contentPane.add(new JLabel("Quantité achetée"));
+		contentPane.add(new JLabel("Quantitï¿½ achetï¿½e"));
 		contentPane.add(txtQuantite);
 		contentPane.add(btAchat);
 

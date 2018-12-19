@@ -1,3 +1,5 @@
+package Affichage;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -20,7 +22,7 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 
 		JLabel labNom = new JLabel("Nom produit");
 		JLabel labPrixHT = new JLabel("Prix Hors Taxe");
-		JLabel labQte = new JLabel("Quantité en stock");
+		JLabel labQte = new JLabel("Quantitï¿½ en stock");
 //		JLabel labCategorie = new JLabel("Categorie");
 		contentPane.add(labNom);
 		txtNom = new JTextField(15);
