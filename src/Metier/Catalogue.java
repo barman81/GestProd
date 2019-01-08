@@ -1,16 +1,25 @@
 package Metier;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.Locale;
 
 
 public class Catalogue implements I_Catalogue {
 	private ArrayList<I_Produit> lesProduits = new ArrayList<I_Produit>();
 
+	/**
+	 * Constructeur qui instancie un nouveau catalogue pouvant contenir des produits.
+	 */
 	public Catalogue(){
 	}
 
+	/**
+	 * Méthode qui permet d'ajouter un produit.Acompleter...
+	 * @param produit
+	 * @return bool
+	 */
 	@Override
 	public boolean addProduit(I_Produit produit) {
 		if(produit != null && produit.getPrixUnitaireHT() >0)
@@ -21,6 +30,13 @@ public class Catalogue implements I_Catalogue {
 		return false;
 	}
 
+	/**
+	 * Méthode qui permet d'ajouter un produit, avec son nom, prix et qte.
+	 * @param nom String
+	 * @param prix double
+	 * @param qte int
+	 * @return bool
+	 */
 	@Override
 	public boolean addProduit(String nom, double prix, int qte) {
 		boolean bool = false;
@@ -33,7 +49,11 @@ public class Catalogue implements I_Catalogue {
 		return bool;
 	}
 
-
+	/**
+	 * Méthode qui permet d'ajouter des produits au catalogue depuis une liste de produits. Retourne le nombre de produits ajouter.
+	 * @param l List<I_Produit>
+	 * @return int
+	 */
 	@Override
 	public int addProduits(List<I_Produit> l) {
 		int i = 0;
@@ -51,6 +71,11 @@ public class Catalogue implements I_Catalogue {
 		return i;
 	}
 
+	/**
+	 * Méthode qui permet d'enlever un produit du catalogue via son nom.
+	 * @param nom String
+	 * @return bool
+	 */
 	@Override
 	public boolean removeProduit(String nom) {
 		if(lesProduits.contains((nom))) {
@@ -64,6 +89,12 @@ public class Catalogue implements I_Catalogue {
 		return false;
 	}
 
+	/**
+	 * Méthode qui permet d'ajouter un stock à un produit.
+	 * @param nomProduit String
+	 * @param qteAchetee  int
+	 * @return bool
+	 */
 	@Override
 	public boolean acheterStock(String nomProduit, int qteAchetee) {
 		if(lesProduits.contains((nomProduit))) {
@@ -74,6 +105,12 @@ public class Catalogue implements I_Catalogue {
 		return false;
 	}
 
+	/**
+	 * Méthode qui permet de vendre le stock d'un produit. Elle décremente le stock du produit passé en paramètre selon la quantité saisie en paramètre.
+	 * @param nomProduit
+	 * @param qteVendue
+	 * @return bool
+	 */
 	@Override
 	public boolean vendreStock(String nomProduit, int qteVendue) {
 		for(I_Produit unProduit :lesProduits) {
@@ -87,6 +124,10 @@ public class Catalogue implements I_Catalogue {
 		return false;
 	}
 
+	/**
+	 * Méthode qui retourne les produit sous forme de tableau de string
+	 * @return Strings[noms]
+	 */
 	@Override
 	public String[] getNomProduits() {
 		String noms[] = new String[lesProduits.size()];
@@ -98,21 +139,38 @@ public class Catalogue implements I_Catalogue {
 		return noms;
 	}
 
+	/**
+	 * Retourne le Montant Total TTC de la liste des produits
+	 * @return
+	 */
 	@Override
 	public double getMontantTotalTTC() {
 		double montant = 0;
 		for(I_Produit unProduit :lesProduits){
 			montant += unProduit.getPrixStockTTC();
-
 		}
 		return montant;
 	}
 
+	/**
+	 * Retourne l'ensemble des infos des produits du catalogue.
+	 * Retour sous la forme : Nom du produit - Prix HT - Prix TTC - Quantité en stock
+	 * @return String
+	 */
 	@Override
 	public String toString() {
-		return "la liste de produit contients : " + lesProduits;
+		String listeProduit = new String();
+		//return "la liste de produit contients : " + lesProduits;
+		for(I_Produit unProduit :lesProduits){
+			listeProduit += unProduit.getNom() + "- prix HT : " + unProduit;
+		}
+		//"Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
+		return listeProduit;
 	}
 
+	/**
+	 * Vide le catalogue des produits
+	 */
 	@Override
 	public void clear() {
 		lesProduits.removeAll(lesProduits);
