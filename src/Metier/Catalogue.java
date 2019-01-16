@@ -97,13 +97,21 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean acheterStock(String nomProduit, int qteAchetee) {
-		if(lesProduits.contains((nomProduit))) {
+		for (I_Produit unProduit : lesProduits) {
+			if (unProduit.getNom() == nomProduit) {
+				unProduit.ajouter(qteAchetee);
+				return true;
+			}
+		}
+		return false;
+	}
+		/*if(lesProduits.contains((nomProduit))) {
 			I_Produit unProduit = lesProduits.get(lesProduits.indexOf(nomProduit));
 			unProduit.ajouter(qteAchetee);
 			return true;
 		}
-		return false;
-	}
+		return false;*/
+
 
 	/**
 	 * Méthode qui permet de vendre le stock d'un produit. Elle décremente le stock du produit passé en paramètre selon la quantité saisie en paramètre.
