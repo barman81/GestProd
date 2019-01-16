@@ -796,7 +796,9 @@ public class CatalogueTest {
 
     @Test
     public void testClear() {
-        fail("A vous d'écrire le code de ce test");
+        cat.addProduit("Mars", 10, 6);
+        cat.addProduit("Treets", 10, 4);
+        cat.addProduit("Raider", 1, 12);
     }
 
     private I_Produit createProduit(String nom, double prixHT, int quantite) {
