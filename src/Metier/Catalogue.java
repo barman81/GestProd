@@ -22,10 +22,14 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean addProduit(I_Produit produit) {
-		if(produit != null && produit.getPrixUnitaireHT() >0)
+		if(produit != null && produit.getPrixUnitaireHT() >0 && !lesProduits.contains(produit))
 		{
-			lesProduits.add(produit);
-			return true;
+			for(I_Produit unProduit: lesProduits){
+				if (unProduit.getNom() == produit.getNom()){
+					return false;
+				}
+			}
+			return lesProduits.add(produit);
 		}
 		return false;
 	}
@@ -39,10 +43,16 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean addProduit(String nom, double prix, int qte) {
-		boolean bool = false;
 		String test = nom.trim();
-		Produit p1 = new Produit(test, prix, qte);
-		if(lesProduits.contains(p1)) {
+		boolean bool = false;
+		if (qte > 0) {
+			Produit p1 = new Produit(test, prix, qte);
+			for (I_Produit unProduit : lesProduits) {
+				if (unProduit.getNom().equals(nom)) {
+					unProduit.ajouter(qte);
+					bool = true;
+				}
+			}
 			lesProduits.add(p1);
 			bool = true;
 		}
@@ -97,10 +107,11 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean acheterStock(String nomProduit, int qteAchetee) {
-		for (I_Produit unProduit : lesProduits) {
-			if (unProduit.getNom() == nomProduit) {
-				unProduit.ajouter(qteAchetee);
-				return true;
+		if(qteAchetee > 0) {
+			for (I_Produit unProduit : lesProduits) {
+				if (unProduit.getNom().equals(nomProduit)) {
+					return unProduit.ajouter(qteAchetee);
+				}
 			}
 		}
 		return false;
