@@ -1,5 +1,8 @@
 package Affichage;
 
+import Controleur.ControleurAchatVente;
+import Controleur.ControleurDelete;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -30,6 +33,7 @@ public class FenetreSuppressionProduit extends JFrame implements ActionListener 
 
 	public void actionPerformed(ActionEvent e) {
 		this.dispose();
+		ControleurDelete.supprimerProduit(combo.getSelectedItem().toString());
 	}
 
 }

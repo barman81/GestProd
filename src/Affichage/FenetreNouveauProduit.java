@@ -1,5 +1,8 @@
 package Affichage;
 
+import Controleur.ControleurAchatVente;
+import Controleur.ControleurCreate;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -22,7 +25,7 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 
 		JLabel labNom = new JLabel("Nom produit");
 		JLabel labPrixHT = new JLabel("Prix Hors Taxe");
-		JLabel labQte = new JLabel("Quantit� en stock");
+		JLabel labQte = new JLabel("Quantité en stock");
 //		JLabel labCategorie = new JLabel("Categorie");
 		contentPane.add(labNom);
 		txtNom = new JTextField(15);
@@ -39,7 +42,6 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 //		contentPane.add(labCategorie);
 //		contentPane.add(combo);
 
-		
 		btValider = new JButton("Valider");
 		contentPane.add(btValider);
 
@@ -49,6 +51,9 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		this.dispose();
+		double prix = Double.parseDouble(txtPrixHT.getText());
+		int qte = Integer.parseInt(txtQte.getText());
+		ControleurCreate.acheterNouveauProduit(txtNom.getText(), prix, qte);
 	}
 
 }
