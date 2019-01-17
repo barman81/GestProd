@@ -168,6 +168,11 @@ public class Catalogue implements I_Catalogue {
 	@Override
 	public String toString() {
 		String listeProduit = new String();
+		if (lesProduits.isEmpty()){
+			listeProduit += "\n" + "Montant total TTC du stock : " + getMontantTotalTTC();
+		}
+
+
 		//return "la liste de produit contients : " + lesProduits;
 		for(I_Produit unProduit :lesProduits){
 			listeProduit += unProduit.getNom() + "- prix HT : " + unProduit;
