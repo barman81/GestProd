@@ -1,4 +1,5 @@
 package Metier;
+import java.math.BigDecimal;
 
 public class Produit implements I_Produit{
     private int quantiteStock;
@@ -7,10 +8,23 @@ public class Produit implements I_Produit{
     private double tauxTVA = 0.2;
 
     public Produit(String nom, double prixUnitaireHT, int quantiteStock){
-        nom = nom.replaceAll("\\s", "");
-        this.nom = nom;
+        this.nom = ajusterNomProduit(nom);
+        //this.nom = nom;
         this.prixUnitaireHT = prixUnitaireHT;
         this.quantiteStock = quantiteStock;
+    }
+
+    /**
+     * Permet d'ajuster le nom du produit en elevant les espaces, les tabulations en debut milieu et fin.
+     * @param nom
+     * @return String nomProduit
+     */
+    private String ajusterNomProduit(String nom) {
+        nom = nom.replaceAll("\\s+$", ""); //debut
+        nom = nom.replaceAll("^\\s+", ""); //fin
+        nom = nom.replaceAll("\\t", " "); //tabulation
+
+        return nom;
     }
 
     @Override
@@ -47,13 +61,12 @@ public class Produit implements I_Produit{
 
     @Override
     public double getPrixUnitaireTTC() {
-        //return (prixUnitaireHT*tauxTVA)+prixUnitaireHT;
-        return (prixUnitaireHT*(1+(tauxTVA/100)));
+        return (prixUnitaireHT*tauxTVA)+prixUnitaireHT;
+
     }
 
     @Override
     public double getPrixStockTTC() {
-        //return ((prixUnitaireHT*tauxTVA)+prixUnitaireHT)*quantiteStock;
         return getPrixUnitaireTTC()*quantiteStock;
     }
 

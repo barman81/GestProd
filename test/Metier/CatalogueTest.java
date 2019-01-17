@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -691,17 +690,17 @@ public class CatalogueTest {
     @Test
     public void testToString_CatalogueVide() {
         String resultatAttendu = "\n" +
-                "Montant total TTC du stock : 0,00 ";
+                "Montant total TTC du stock : 0,00 €";
         assertEquals("toString catalogue vide", resultatAttendu, cat.toString());
     }
 
     @Test
     public void testToString_CatalogueAvecDesProduits_TotalAvecAucunChiffreApresVirgule() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Raider - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Raider - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 120,00 ";
+                "Montant total TTC du stock : 120,00 €";
         cat.addProduit("Mars", 10, 5);
         cat.addProduit("Treets", 10, 4);
         cat.addProduit("Raider", 1, 10);
@@ -710,11 +709,11 @@ public class CatalogueTest {
 
     @Test
     public void testToString_CatalogueAvecDesProduits_AvecDesEspaceDansLesNomsDesProduit() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Kit Kat - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Kit Kat - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 120,00 ";
+                "Montant total TTC du stock : 120,00 €";
         cat.addProduit("Mars ", 10, 5);
         cat.addProduit(" Treets", 10, 4);
         cat.addProduit("Kit Kat", 1, 10);
@@ -723,11 +722,11 @@ public class CatalogueTest {
 
     @Test
     public void testToString_CatalogueAvecDesProduits_AvecDesTabulationsDansLesNomsDesProduit() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Kit Kat - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Kit Kat - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 120,00 ";
+                "Montant total TTC du stock : 120,00 €";
         cat.addProduit("Mars	", 10, 5);
         cat.addProduit("	Treets", 10, 4);
         cat.addProduit("Kit	Kat", 1, 10);
@@ -736,12 +735,12 @@ public class CatalogueTest {
 
     @Test
     public void testToString_CatalogueAvecDesProduits_TotalAvecUnChiffreApresVirgule() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Raider - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
-                "Twix - prix HT : 10,45  - prix TTC : 12,54  - quantité en stock : 5" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Raider - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
+                "Twix - prix HT : 10,45 € - prix TTC : 12,54 € - quantité en stock : 5" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 182,70 ";
+                "Montant total TTC du stock : 182,70 €";
         cat.addProduit("Mars", 10, 5);
         cat.addProduit("Treets", 10, 4);
         cat.addProduit("Raider", 1, 10);
@@ -751,12 +750,12 @@ public class CatalogueTest {
 
     @Test
     public void testToString_CatalogueAvecDesProduits_TotalAvecDeuxChiffresApresVirgule() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Raider - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
-                "Twix - prix HT : 10,40  - prix TTC : 12,48  - quantité en stock : 1" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Raider - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
+                "Twix - prix HT : 10,40 € - prix TTC : 12,48 € - quantité en stock : 1" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 132,48 ";
+                "Montant total TTC du stock : 132,48 €";
         cat.addProduit("Mars", 10, 5);
         cat.addProduit("Treets", 10, 4);
         cat.addProduit("Raider", 1, 10);
@@ -766,12 +765,12 @@ public class CatalogueTest {
 
     @Test
     public void testToString_CatalogueAvecDesProduits_TotalAvecTroisChiffresApresVirguleArrondiInferieur() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Raider - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
-                "Twix - prix HT : 10,47  - prix TTC : 12,56  - quantité en stock : 1" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Raider - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
+                "Twix - prix HT : 10,47 € - prix TTC : 12,56 € - quantité en stock : 1" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 132,56 ";
+                "Montant total TTC du stock : 132,56 €";
         cat.addProduit("Mars", 10, 5);
         cat.addProduit("Treets", 10, 4);
         cat.addProduit("Raider", 1, 10);
@@ -781,12 +780,12 @@ public class CatalogueTest {
 
     @Test
     public void testToString_CatalogueAvecDesProduits_TotalAvecTroisChiffresApresVirguleArrondiSuperieur() {
-        String resultatAttendu = "Mars - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 5" + "\n" +
-                "Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-                "Raider - prix HT : 1,00  - prix TTC : 1,20  - quantité en stock : 10" + "\n" +
-                "Twix - prix HT : 10,47  - prix TTC : 12,56  - quantité en stock : 2" + "\n" +
+        String resultatAttendu = "Mars - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 5" + "\n" +
+                "Treets - prix HT : 10,00 € - prix TTC : 12,00 € - quantité en stock : 4" + "\n" +
+                "Raider - prix HT : 1,00 € - prix TTC : 1,20 € - quantité en stock : 10" + "\n" +
+                "Twix - prix HT : 10,47 € - prix TTC : 12,56 € - quantité en stock : 2" + "\n" +
                 "\n" +
-                "Montant total TTC du stock : 145,13 ";
+                "Montant total TTC du stock : 145,13 €";
         cat.addProduit("Mars", 10, 5);
         cat.addProduit("Treets", 10, 4);
         cat.addProduit("Raider", 1, 10);
@@ -799,6 +798,9 @@ public class CatalogueTest {
         cat.addProduit("Mars", 10, 6);
         cat.addProduit("Treets", 10, 4);
         cat.addProduit("Raider", 1, 12);
+        cat.clear();
+        String result = String.valueOf(cat.getMontantTotalTTC());
+        assertEquals("0.0",result);
     }
 
     private I_Produit createProduit(String nom, double prixHT, int quantite) {

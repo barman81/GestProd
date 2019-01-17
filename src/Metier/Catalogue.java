@@ -1,9 +1,8 @@
 package Metier;
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 public class Catalogue implements I_Catalogue {
@@ -22,10 +21,10 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean addProduit(I_Produit produit) {
-		if(produit != null && produit.getPrixUnitaireHT() >0 && !lesProduits.contains(produit))
+		if(produit != null && produit.getPrixUnitaireHT() > 0 && !lesProduits.contains(produit) && produit.getQuantite() >= 0)
 		{
 			for(I_Produit unProduit: lesProduits){
-				if (unProduit.getNom() == produit.getNom()){
+				if (unProduit.getNom().equals(produit.getNom())){
 					return false;
 				}
 			}
@@ -43,14 +42,12 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean addProduit(String nom, double prix, int qte) {
-		String test = nom.trim();
 		boolean bool = false;
-		if (qte > 0) {
-			Produit p1 = new Produit(test, prix, qte);
+		if (qte >= 0 && prix > 0) {
+			Produit p1 = new Produit(nom, prix, qte);
 			for (I_Produit unProduit : lesProduits) {
-				if (unProduit.getNom().equals(nom)) {
-					unProduit.ajouter(qte);
-					bool = true;
+				if (unProduit.getNom().equals(p1.getNom())) {
+					return false;
 				}
 			}
 			lesProduits.add(p1);
@@ -67,14 +64,10 @@ public class Catalogue implements I_Catalogue {
 	@Override
 	public int addProduits(List<I_Produit> l) {
 		int i = 0;
-		
 		if(l!=null && !l.isEmpty()){
 			for (I_Produit unProduit : l) {
-				if(unProduit.getPrixUnitaireHT() != 0 && unProduit.getQuantite() >0) {
-					if(!lesProduits.contains(unProduit)) {
-						lesProduits.add(unProduit);		
-						i++;
-					}	
+				if (addProduit(unProduit) == true) {
+					i++;
 				}
 			}
 		}
@@ -88,14 +81,12 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean removeProduit(String nom) {
-		if(lesProduits.contains((nom))) {
 			for (I_Produit unProduit : lesProduits) {
-				if (nom.equals(unProduit.getNom())) {
+				if (unProduit.getNom().equals(nom)) {
 					lesProduits.remove(unProduit);
 					return true;
 				}
 			}
-		}
 		return false;
 	}
 
@@ -132,6 +123,9 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean vendreStock(String nomProduit, int qteVendue) {
+		if (qteVendue <= 0){
+			return false;
+		}
 		for(I_Produit unProduit :lesProduits) {
 			if (unProduit.getNom() == nomProduit) {
 				if(unProduit.getQuantite() >= qteVendue && unProduit.getQuantite() >0) {
@@ -155,6 +149,7 @@ public class Catalogue implements I_Catalogue {
 			noms[i]=unProduit.getNom();
 			i++;
 		}
+		Arrays.sort(noms);
 		return noms;
 	}
 
@@ -168,6 +163,9 @@ public class Catalogue implements I_Catalogue {
 		for(I_Produit unProduit :lesProduits){
 			montant += unProduit.getPrixStockTTC();
 		}
+		BigDecimal bd = new BigDecimal(montant);
+		bd = bd.setScale(2,BigDecimal.ROUND_HALF_EVEN);
+		montant = bd.doubleValue();
 		return montant;
 	}
 
@@ -180,11 +178,21 @@ public class Catalogue implements I_Catalogue {
 	public String toString() {
 		String listeProduit = new String();
 		//return "la liste de produit contients : " + lesProduits;
+		NumberFormat format=NumberFormat.getInstance();
+		format.setMinimumFractionDigits(2);
 		for(I_Produit unProduit :lesProduits){
-			listeProduit += unProduit.getNom() + "- prix HT : " + unProduit;
+			String prixHT = format.format(unProduit.getPrixUnitaireHT());
+
+			double montant = unProduit.getPrixUnitaireTTC();
+			BigDecimal bd = new BigDecimal(montant);
+			bd = bd.setScale(2,BigDecimal.ROUND_HALF_EVEN);
+			montant = bd.doubleValue();
+			String prixTTC = format.format(montant);
+			listeProduit += unProduit.getNom() + " - prix HT : " + prixHT + " € - prix TTC : " + prixTTC+ " € - quantité en stock : " + unProduit.getQuantite() + "\n";
 		}
 		//"Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
-		return listeProduit;
+		String prixTotalTTC = format.format(getMontantTotalTTC());
+		return listeProduit + "\n" + "Montant total TTC du stock : " + prixTotalTTC + " €";
 	}
 
 	/**
