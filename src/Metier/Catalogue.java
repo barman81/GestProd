@@ -22,10 +22,14 @@ public class Catalogue implements I_Catalogue {
 	 */
 	@Override
 	public boolean addProduit(I_Produit produit) {
-		if(produit != null && produit.getPrixUnitaireHT() >0)
+		if(produit != null && produit.getPrixUnitaireHT() >0 && !lesProduits.contains(produit))
 		{
-			lesProduits.add(produit);
-			return true;
+			for(I_Produit unProduit: lesProduits){
+				if (unProduit.getNom() == produit.getNom()){
+					return false;
+				}
+			}
+			return lesProduits.add(produit);
 		}
 		return false;
 	}

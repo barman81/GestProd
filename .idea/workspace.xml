@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae009c71-aead-4e48-b379-04b7bf24de8c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Metier/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metier/Catalogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Metier/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metier/Produit.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,137 +16,131 @@
     <SUITE FILE_PATH="coverage/GestProd$CatalogueTest.ic" NAME="CatalogueTest Coverage Results" MODIFIED="1547649912228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="220" />
+    <option name="myElementSize" value="224" />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/test/Metier/CatalogueTest.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="170">
+                    <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5421903">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Metier/I_Produit.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Metier/Catalogue.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="141">
-                  <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#257#268#0" expanded="true" />
-                    <element signature="e#4540#4541#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Metier/Produit.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="158">
-                  <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#784#785#0" expanded="true" />
-                    <element signature="e#810#811#0" expanded="true" />
-                    <element signature="e#856#857#0" expanded="true" />
-                    <element signature="e#892#893#0" expanded="true" />
-                    <element signature="e#947#948#0" expanded="true" />
-                    <element signature="e#984#985#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/Metier/CatalogueTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="117">
-                  <caret line="474" column="16" selection-start-line="474" selection-start-column="16" selection-end-line="474" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Affichage/FenetrePrincipale.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreVente.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="18" selection-start-column="18" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreAchat.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="21" selection-start-line="20" selection-start-column="12" selection-end-line="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreAffichage.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="18" selection-start-column="18" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreNouveauProduit.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="18" selection-start-column="18" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Metier/I_Catalogue.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/test/Metier/CatalogueTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-49">
-                  <caret line="474" column="21" selection-start-line="474" selection-start-column="21" selection-end-line="474" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metier/I_Produit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Metier/Catalogue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#257#268#0" expanded="true" />
+                <element signature="e#4686#4687#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/Metier/CatalogueTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="105" column="98" selection-start-line="105" selection-start-column="98" selection-end-line="105" selection-end-column="98" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Affichage/FenetrePrincipale.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreVente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreAchat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="21" selection-start-line="20" selection-start-column="12" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreAffichage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreNouveauProduit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metier/I_Catalogue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="67">
+              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metier/Produit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -161,7 +154,12 @@
       <find>acheter</find>
       <find>ache</find>
       <find>acheterStock</find>
+      <find>ach</find>
       <find>add</find>
+      <find>create</find>
+      <find>cre</find>
+      <find>testAddProduitIProduit_deu</find>
+      <find>addP</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -178,22 +176,22 @@
       <list>
         <option value="$PROJECT_DIR$/src/Affichage/Main.java" />
         <option value="$PROJECT_DIR$/src/Metier/I_Produit.java" />
-        <option value="$PROJECT_DIR$/src/Metier/Produit.java" />
         <option value="$PROJECT_DIR$/src/Affichage/FenetreAffichage.java" />
         <option value="$PROJECT_DIR$/src/Affichage/FenetreNouveauProduit.java" />
         <option value="$PROJECT_DIR$/src/Affichage/FenetreSuppressionProduit.java" />
         <option value="$PROJECT_DIR$/src/Affichage/FenetreVente.java" />
         <option value="$PROJECT_DIR$/src/Affichage/FenetreAchat.java" />
         <option value="$PROJECT_DIR$/src/Affichage/FenetrePrincipale.java" />
+        <option value="$PROJECT_DIR$/src/Metier/Produit.java" />
         <option value="$PROJECT_DIR$/src/Metier/Catalogue.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="-30" />
-    <option name="width" value="1440" />
-    <option name="height" value="825" />
+    <option name="x" value="-37" />
+    <option name="y" value="-23" />
+    <option name="width" value="1800" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -255,7 +253,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547649905882" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547721710896" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -314,13 +312,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CatalogueTest.testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GestProd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Metier.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Metier" />
+      <option name="MAIN_CLASS_NAME" value="Metier.CatalogueTest" />
+      <option name="METHOD_NAME" value="testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.CatalogueTest" />
       <item itemvalue="JUnit.CatalogueTest.testAcheterProduit_existe" />
+      <item itemvalue="JUnit.CatalogueTest.testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CatalogueTest.testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin" />
         <item itemvalue="JUnit.CatalogueTest.testAcheterProduit_existe" />
         <item itemvalue="Application.Main" />
       </list>
@@ -383,39 +400,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CatalogueTest - 2019.01.16 at 15h 04m 25s.xml">
-      <configuration name="CatalogueTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest_testAcheterProduit_existe - 2019.01.16 at 15h 19m 48s.xml">
-      <configuration name="CatalogueTest.testAcheterProduit_existe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest_testAcheterProduit_existe - 2019.01.16 at 15h 21m 47s.xml">
-      <configuration name="CatalogueTest.testAcheterProduit_existe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest_testAcheterProduit_existe - 2019.01.16 at 15h 25m 23s.xml">
-      <configuration name="CatalogueTest.testAcheterProduit_existe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest_testAcheterProduit_existe - 2019.01.16 at 15h 36m 51s.xml">
-      <configuration name="CatalogueTest.testAcheterProduit_existe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest_testAcheterProduit_existe - 2019.01.16 at 15h 41m 35s.xml">
-      <configuration name="CatalogueTest.testAcheterProduit_existe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest - 2019.01.16 at 15h 42m 11s.xml">
-      <configuration name="CatalogueTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CatalogueTest - 2019.01.16 at 15h 44m 36s.xml">
-      <configuration name="CatalogueTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CatalogueTest - 2019.01.16 at 15h 45m 23s.xml">
       <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 15h 47m 10s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 15h 53m 29s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 15h 54m 29s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 15h 55m 01s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 15h 57m 47s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 16h 04m 32s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest - 2019.01.16 at 16h 06m 15s.xml">
+      <configuration name="CatalogueTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest_testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin - 2019.01.17 at 11h 34m 37s.xml">
+      <configuration name="CatalogueTest.testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CatalogueTest_testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin - 2019.01.17 at 11h 37m 04s.xml">
+      <configuration name="CatalogueTest.testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16845638" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49784482" weight="0.16845638" />
+      <window_info id="Structure" order="1" sideWeight="0.5021552" side_tool="true" weight="0.16845638" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -423,7 +443,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.21104816" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.27620396" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45750707" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -432,7 +452,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5013423" side_tool="true" weight="0.3838527" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49932885" weight="0.3286119" />
-      <window_info anchor="right" id="Coverage" side_tool="true" visible="true" weight="0.3295302" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3295302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -451,6 +471,20 @@
     <MESSAGE value="maj catalogue" />
     <option name="LAST_COMMIT_MESSAGE" value="maj catalogue" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Metier/Produit.java</url>
+          <line>8</line>
+          <properties class="Metier.Produit" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Controleur/ControleurCreateDelete.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -464,20 +498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreVente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreAchat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" selection-start-line="20" selection-start-column="12" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -498,13 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Metier/I_Catalogue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Affichage/FenetrePrincipale.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -522,36 +535,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreAchat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="21" selection-start-line="20" selection-start-column="12" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Affichage/FenetreVente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metier/I_Catalogue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Metier/Produit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#856#857#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#947#948#0" expanded="true" />
-            <element signature="e#984#985#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/Metier/CatalogueTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="474" column="16" selection-start-line="474" selection-start-column="16" selection-end-line="474" selection-end-column="16" />
+        <state relative-caret-position="128">
+          <caret line="105" column="98" selection-start-line="105" selection-start-column="98" selection-end-line="105" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Metier/Catalogue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
+        <state relative-caret-position="50">
+          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#257#268#0" expanded="true" />
-            <element signature="e#4540#4541#0" expanded="true" />
+            <element signature="e#4686#4687#0" expanded="true" />
           </folding>
         </state>
       </provider>
