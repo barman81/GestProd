@@ -7,13 +7,13 @@ import javax.swing.*;
 import Controleur.ControleurAchatVente;
 import Controleur.ControleurCreate;
 import Metier.Catalogue;
-
-
+import Metier.Produit;
+import Modele.ProduitDao;
 
 
 public class FenetrePrincipale extends JFrame implements ActionListener,
 		WindowListener {
-
+	private  ProduitDao produitDao = new ProduitDao();
 	private JButton btAfficher;
 	private JButton btNouveauProduit;
 	private JButton btSupprimerProduit;
@@ -24,8 +24,8 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 	private JButton btQuitter;
 
 	
-	public FenetrePrincipale() {
-		
+	public FenetrePrincipale() throws ClassNotFoundException {
+		produitDao.getListeProduits();
 		setTitle("exercice Produits");
 		setBounds(500, 500, 320, 250);
 		JPanel panAffichage = new JPanel();
@@ -115,7 +115,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 		new FenetrePrincipale();
 	}
 
