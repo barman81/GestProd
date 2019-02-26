@@ -177,11 +177,6 @@ public class Catalogue implements I_Catalogue {
 	@Override
 	public String toString() {
 		String listeProduit = new String();
-		if (lesProduits.isEmpty()){
-			listeProduit += "\n" + "Montant total TTC du stock : " + getMontantTotalTTC();
-		}
-
-
 		//return "la liste de produit contients : " + lesProduits;
 		NumberFormat format=NumberFormat.getInstance();
 		format.setMinimumFractionDigits(2);
@@ -195,7 +190,7 @@ public class Catalogue implements I_Catalogue {
 			String prixTTC = format.format(montant);
 			listeProduit += unProduit.getNom() + " - prix HT : " + prixHT + " € - prix TTC : " + prixTTC+ " € - quantité en stock : " + unProduit.getQuantite() + "\n";
 		}
-		//"Treets - prix HT : 10,00  - prix TTC : 12,00  - quantité en stock : 4" + "\n" +
+		//"Treets - prix HT : 10,00 � - prix TTC : 12,00 � - quantité en stock : 4" + "\n" +
 		String prixTotalTTC = format.format(getMontantTotalTTC());
 		return listeProduit + "\n" + "Montant total TTC du stock : " + prixTotalTTC + " €";
 	}
