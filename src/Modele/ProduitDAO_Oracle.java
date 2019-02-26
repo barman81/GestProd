@@ -8,7 +8,7 @@ import Metier.I_Produit;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ProduitDAO_Oracle {
+public class ProduitDAO_Oracle implements I_ProduitDAO{
 
     private static I_Catalogue cat = ControleurCreate.cat;
     private final String url = "jdbc:oracle:thin:@162.38.222.149:1521:iut";
@@ -16,6 +16,7 @@ public class ProduitDAO_Oracle {
     private final String pdw = "1609013792K";
     private Connection cn;
     private Statement st;
+
 
     private void seConnecter() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -28,6 +29,7 @@ public class ProduitDAO_Oracle {
         cn.close();
     }
 
+    @Override
     public boolean addProduit(String nom, double prixUnitaireHT, int quantiteStock) throws  ClassNotFoundException {
        boolean result = true;
         try {
@@ -40,6 +42,7 @@ public class ProduitDAO_Oracle {
         return result;
     }
 
+    @Override
     public boolean updateProduit(String nom, double prixUnitaireHT, int quantiteStock) throws SQLException, ClassNotFoundException {
         boolean result = true;
         try {
@@ -52,6 +55,7 @@ public class ProduitDAO_Oracle {
         return result;
     }
 
+    @Override
     public boolean deleteProduit(String nom) throws SQLException, ClassNotFoundException {
         boolean result = true;
         try {
@@ -64,6 +68,7 @@ public class ProduitDAO_Oracle {
             return result;
     }
 
+    @Override
     public void getListeProduits() throws ClassNotFoundException {
         ArrayList<I_Produit> listeProduit = null;
         try {
