@@ -6,8 +6,8 @@ public class ProduitFactoryDAO {
         return new ProduitDAO_Oracle();
     }
 
-//    public static I_ProduitDAO createProduitDAO_XML(){
-//        return new AdapatateurDAO_XML();
-//    }
+    public static I_ProduitDAO createProduitDAO_XML(){
+        return new AdaptateurDAO_XML();
+    }
 
 }

@@ -6,12 +6,16 @@ import javax.swing.*;
 
 import Controleur.ControleurAchatVente;
 import Controleur.ControleurCreate;
+import Metier.Catalogue;
+import Metier.I_Catalogue;
+import Modele.I_ProduitDAO;
 import Modele.ProduitDAO_Oracle;
+import Modele.ProduitFactoryDAO;
 
 
 public class FenetrePrincipale extends JFrame implements ActionListener,
 		WindowListener {
-	private ProduitDAO_Oracle produitDAOOracle = new ProduitDAO_Oracle();
+	public static I_Catalogue cat = new Catalogue();
 	private JButton btAfficher;
 	private JButton btNouveauProduit;
 	private JButton btSupprimerProduit;
@@ -23,7 +27,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 
 	
 	public FenetrePrincipale() throws ClassNotFoundException {
-		ControleurCreate.cat.addProduits(produitDAOOracle.getListeProduits());
+		cat.addProduits(ProduitFactoryDAO.createProduitDAO_Oracle().getListeProduits());
 		setTitle("exercice Produits");
 		setBounds(500, 500, 320, 250);
 		JPanel panAffichage = new JPanel();
