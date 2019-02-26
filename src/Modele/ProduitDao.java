@@ -31,7 +31,7 @@ public class ProduitDao {
        boolean result = true;
         try {
            seConnecter();
-           st.executeUpdate("INSERT INTO Gestprod/produit (nom, prix_UnitaireHT,quantite_Stock) VALUES (" + nom + "," + prixUnitaireHT + ", " + quantiteStock + ")");
+           st.executeUpdate("INSERT INTO Gestprod_produit (nom, prix_UnitaireHT,quantite_Stock) VALUES (" + nom + "," + prixUnitaireHT + ", " + quantiteStock + ")");
            seDeconnecter();
        }catch(SQLException e){
            result = false;
