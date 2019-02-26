@@ -53,10 +53,10 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
-            PreparedStatement preparedStatement = cn.prepareStatement("UPDATE GESTPROD_PRODUIT(NOM_PRODUIT = ?, PRIX_UNITAIRE_HT = ?,QUANTITE_STOCK =  ");
-            preparedStatement.setString(1, produit.getNom());
-            preparedStatement.setDouble(2, produit.getPrixUnitaireHT());
-            preparedStatement.setInt(3, produit.getQuantite());
+            PreparedStatement preparedStatement = cn.prepareStatement("UPDATE GESTPROD_PRODUIT(PRIX_UNITAIRE_HT = ?,QUANTITE_STOCK = ? where NOM_PRODUIT = ?");
+            preparedStatement.setDouble(1, produit.getPrixUnitaireHT());
+            preparedStatement.setInt(2, produit.getQuantite());
+            preparedStatement.setString(3, produit.getNom());
             preparedStatement.executeQuery();
             //st.executeUpdate("UPDATE GESTPROD_PRODUIT( NOM_PRODUIT  = " + produit.getNom()+ ", QUANTITE_STOCK = " + produit.getQuantite() + ")");
             seDeconnecter();
@@ -105,11 +105,17 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     @Override
     public I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException {
         seConnecter();
-        st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = "+ nom);
-        ResultSet rs = st.getResultSet();
+        I_Produit produit = null;
+        PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = ?");
+        preparedStatement.setString(1, nom);
+        preparedStatement.executeQuery();
+        ResultSet rs = preparedStatement.getResultSet();
+        if(rs.next()){
         double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
         int quantiteStock = rs.getInt("QUANTITE_STOCK");
-        I_Produit produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+        produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+
+        }
         return produit;
     }
 

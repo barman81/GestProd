@@ -5,6 +5,7 @@ import Controleur.ControleurCreate;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 import javax.swing.*;
 
 public class FenetreAchat extends JFrame implements ActionListener {
@@ -39,7 +40,13 @@ public class FenetreAchat extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.dispose();
 		int qte = Integer.parseInt(txtQuantite.getText());
-		ControleurAchatVente.acheterStockProduit(combo.getSelectedItem().toString(), qte);
+		try {
+			ControleurAchatVente.acheterStockProduit(combo.getSelectedItem().toString(), qte);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 }
