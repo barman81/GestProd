@@ -1,5 +1,8 @@
 package Modele;
 
+import Affichage.FenetreAffichage;
+import Controleur.ControleurCreate;
+import Metier.Catalogue;
 import Metier.I_Catalogue;
 import Metier.I_Produit;
 import java.sql.*;
@@ -7,7 +10,7 @@ import java.util.ArrayList;
 
 public class ProduitDao {
 
-    I_Catalogue cat;
+    private static I_Catalogue cat = ControleurCreate.cat;
     private final String url = "jdbc:oracle:thin:@162.38.222.149:1521:iut";
     private final String login = "baronm";
     private final String pdw = "1609013792K";
@@ -61,11 +64,11 @@ public class ProduitDao {
             return result;
     }
 
-    public ArrayList<I_Produit> getListeProduits() throws ClassNotFoundException {
+    public void getListeProduits() throws ClassNotFoundException {
         ArrayList<I_Produit> listeProduit = null;
         try {
             seConnecter();
-            st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from GESTPROD_PRODUIT");
+            st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS");
             ResultSet rs = st.getResultSet();
 
             if(rs.next()){
@@ -73,12 +76,12 @@ public class ProduitDao {
                 double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
                 int quantiteStock = rs.getInt("QUANTITE_STOCK");
                 cat.addProduit(nom, prixUnitaireHT, quantiteStock);
+                System.out.println(cat);
             }
             seDeconnecter();
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return listeProduit;
     }
 
 }
