@@ -6,14 +6,12 @@ import javax.swing.*;
 
 import Controleur.ControleurAchatVente;
 import Controleur.ControleurCreate;
-import Metier.Catalogue;
-import Metier.Produit;
-import Modele.ProduitDao;
+import Modele.ProduitDAO_Oracle;
 
 
 public class FenetrePrincipale extends JFrame implements ActionListener,
 		WindowListener {
-	private  ProduitDao produitDao = new ProduitDao();
+	private ProduitDAO_Oracle produitDAOOracle = new ProduitDAO_Oracle();
 	private JButton btAfficher;
 	private JButton btNouveauProduit;
 	private JButton btSupprimerProduit;
@@ -25,7 +23,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 
 	
 	public FenetrePrincipale() throws ClassNotFoundException {
-		produitDao.getListeProduits();
+		produitDAOOracle.getListeProduits();
 		setTitle("exercice Produits");
 		setBounds(500, 500, 320, 250);
 		JPanel panAffichage = new JPanel();

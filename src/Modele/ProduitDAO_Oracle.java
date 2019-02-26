@@ -8,7 +8,7 @@ import Metier.I_Produit;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ProduitDao {
+public class ProduitDAO_Oracle {
 
     private static I_Catalogue cat = ControleurCreate.cat;
     private final String url = "jdbc:oracle:thin:@162.38.222.149:1521:iut";
