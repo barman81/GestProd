@@ -1,7 +1,10 @@
+package modele;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import Metier.I_Produit;
+import Metier.Produit;
 import org.jdom.*;
 import org.jdom.input.*;
 import org.jdom.output.*;
