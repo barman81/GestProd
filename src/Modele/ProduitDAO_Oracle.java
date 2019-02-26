@@ -73,7 +73,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
 
     @Override
     public List<I_Produit> getListeProduits() throws ClassNotFoundException {
-        ArrayList<I_Produit> listeProduit = null;
+        List<I_Produit> listeProduits = new ArrayList<>();
         try {
             seConnecter();
             st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS");
@@ -85,13 +85,13 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
                 int quantiteStock = rs.getInt("QUANTITE_STOCK");
 //                cat.addProduit(nom, prixUnitaireHT, quantiteStock);
                 I_Produit produit = new Produit(nom, prixUnitaireHT, quantiteStock);
-                listeProduit.add(produit);
+                listeProduits.add(produit);
             }
             seDeconnecter();
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return listeProduit;
+        return listeProduits;
     }
 
     @Override

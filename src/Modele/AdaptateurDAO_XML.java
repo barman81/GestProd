@@ -30,4 +30,9 @@ public class AdaptateurDAO_XML implements I_ProduitDAO{
     public List<I_Produit> getListeProduits() throws ClassNotFoundException {
         return  produitDAO_xml.lireTous();
     }
+
+    @Override
+    public I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException {
+        return produitDAO_xml.lire(nom);
+    }
 }

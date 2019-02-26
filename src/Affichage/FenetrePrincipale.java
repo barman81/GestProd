@@ -23,7 +23,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 
 	
 	public FenetrePrincipale() throws ClassNotFoundException {
-		produitDAOOracle.getListeProduits();
+		ControleurCreate.cat.addProduits(produitDAOOracle.getListeProduits());
 		setTitle("exercice Produits");
 		setBounds(500, 500, 320, 250);
 		JPanel panAffichage = new JPanel();
