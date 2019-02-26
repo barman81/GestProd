@@ -71,12 +71,11 @@ public class ProduitDao {
             st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS");
             ResultSet rs = st.getResultSet();
 
-            if(rs.next()){
+            while(rs.next()){
                 String nom = rs.getString("NOM_PRODUIT");
                 double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
                 int quantiteStock = rs.getInt("QUANTITE_STOCK");
                 cat.addProduit(nom, prixUnitaireHT, quantiteStock);
-                System.out.println(cat);
             }
             seDeconnecter();
         }catch(SQLException e){
