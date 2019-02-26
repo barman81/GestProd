@@ -67,7 +67,7 @@ public class ProduitDao {
         ArrayList<I_Produit> listeProduit = null;
         try {
             seConnecter();
-            st.executeQuery("select nom, prixUnitaireHT, quantiteStock from Gestprod/produit");
+            st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from GESTPROD_PRODUIT");
             ResultSet rs = st.getResultSet();
 
             if(rs.next()){
