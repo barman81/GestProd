@@ -1,5 +1,7 @@
 package Affichage;
 
+import Controleur.ControleurAchatVente;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -23,7 +25,7 @@ public class FenetreVente extends JFrame implements ActionListener {
 		combo.setPreferredSize(new Dimension(100, 20));
 		contentPane.add(new JLabel("Produit"));
 		contentPane.add(combo);
-		contentPane.add(new JLabel("Quantit� vendue"));
+		contentPane.add(new JLabel("Quantité vendue"));
 		contentPane.add(txtQuantite);
 		contentPane.add(btVente);
 
@@ -33,6 +35,8 @@ public class FenetreVente extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		this.dispose();
+		int qte = Integer.parseInt(txtQuantite.getText());
+		ControleurAchatVente.vendreProduit(combo.getSelectedItem().toString(), qte);
 	}
 
 }
