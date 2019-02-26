@@ -53,7 +53,11 @@ public class FenetreNouveauProduit extends JFrame implements ActionListener {
 		this.dispose();
 		double prix = Double.parseDouble(txtPrixHT.getText());
 		int qte = Integer.parseInt(txtQte.getText());
-		ControleurCreate.acheterNouveauProduit(txtNom.getText(), prix, qte);
+		try {
+			ControleurCreate.acheterNouveauProduit(txtNom.getText(), prix, qte);
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 }

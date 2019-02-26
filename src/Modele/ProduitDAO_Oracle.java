@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ProduitDAO_Oracle implements I_ProduitDAO{
 
-    private static I_Catalogue cat = ControleurCreate.cat;
     private final String url = "jdbc:oracle:thin:@162.38.222.149:1521:iut";
     private final String login = "baronm";
     private final String pdw = "1609013792K";
@@ -37,7 +36,8 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
        boolean result = true;
         try {
            seConnecter();
-           st.executeUpdate("INSERT INTO GESTPROD_PRODUIT (NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK) VALUES (" + produit.getNom() + "," + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
+           st.executeUpdate("CALL GESTPROD_ADDPRODUCT(" + produit.getNom() + "," + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
+           st.executeQuery("commit");
            seDeconnecter();
        }catch(SQLException e){
            result = false;
@@ -50,7 +50,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
-            st.executeUpdate("CALL GESTPROD_ADDPRODUCT(" + produit.getNom()+ ", " + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
+            st.executeUpdate("UPDATE GESTPROD_PRODUIT( NOM_PRODUIT  = " + produit.getNom()+ ", PRIX_UNITAIRE_HT = " + produit.getPrixUnitaireHT() + ", QUANTITE_STOCK = " + produit.getQuantite() + ")");
             seDeconnecter();
         }catch(SQLException e){
             result = false;
