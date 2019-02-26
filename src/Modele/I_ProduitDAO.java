@@ -1,14 +1,19 @@
 package Modele;
 
+import Metier.I_Produit;
+
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_ProduitDAO {
 
-    boolean addProduit(String nom, double prixUnitaireHT, int quantiteStock) throws ClassNotFoundException;
+    boolean addProduit(I_Produit produit) throws ClassNotFoundException;
 
-    boolean updateProduit(String nom, double prixUnitaireHT, int quantiteStock) throws SQLException, ClassNotFoundException;
+    boolean updateProduit(I_Produit produit) throws SQLException, ClassNotFoundException;
 
-    boolean deleteProduit(String nom) throws SQLException, ClassNotFoundException;
+    boolean deleteProduit(I_Produit produit) throws SQLException, ClassNotFoundException;
 
-    void getListeProduits() throws ClassNotFoundException;
+    List<I_Produit> getListeProduits() throws ClassNotFoundException;
+
+    I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException;
 }

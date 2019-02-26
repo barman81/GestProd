@@ -5,8 +5,11 @@ import Controleur.ControleurCreate;
 import Metier.Catalogue;
 import Metier.I_Catalogue;
 import Metier.I_Produit;
+import Metier.Produit;
+
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProduitDAO_Oracle implements I_ProduitDAO{
 
@@ -30,11 +33,11 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public boolean addProduit(String nom, double prixUnitaireHT, int quantiteStock) throws  ClassNotFoundException {
+    public boolean addProduit(I_Produit produit) throws  ClassNotFoundException {
        boolean result = true;
         try {
            seConnecter();
-           st.executeUpdate("INSERT INTO GESTPROD_PRODUIT (NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK) VALUES (" + nom + "," + prixUnitaireHT + ", " + quantiteStock + ")");
+           st.executeUpdate("INSERT INTO GESTPROD_PRODUIT (NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK) VALUES (" + produit.getNom() + "," + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
            seDeconnecter();
        }catch(SQLException e){
            result = false;
@@ -43,11 +46,11 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public boolean updateProduit(String nom, double prixUnitaireHT, int quantiteStock) throws SQLException, ClassNotFoundException {
+    public boolean updateProduit(I_Produit produit) throws SQLException, ClassNotFoundException {
         boolean result = true;
         try {
             seConnecter();
-            st.executeUpdate("CALL GESTPROD_ADDPRODUCT(" + nom + ", " + prixUnitaireHT + ", " + quantiteStock + ")");
+            st.executeUpdate("CALL GESTPROD_ADDPRODUCT(" + produit.getNom()+ ", " + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
             seDeconnecter();
         }catch(SQLException e){
             result = false;
@@ -56,11 +59,11 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public boolean deleteProduit(String nom) throws SQLException, ClassNotFoundException {
+    public boolean deleteProduit(I_Produit produit) throws SQLException, ClassNotFoundException {
         boolean result = true;
         try {
             seConnecter();
-            st.executeUpdate("DELETE FROM  GESTPROD_PRODUIT WHERE NOM_PRODUIT = "+ nom);
+            st.executeUpdate("DELETE FROM  GESTPROD_PRODUIT WHERE NOM_PRODUIT = "+ produit.getNom());
             seDeconnecter();
         }catch(SQLException e){
             result = false;
@@ -69,7 +72,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public void getListeProduits() throws ClassNotFoundException {
+    public List<I_Produit> getListeProduits() throws ClassNotFoundException {
         ArrayList<I_Produit> listeProduit = null;
         try {
             seConnecter();
@@ -80,12 +83,26 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
                 String nom = rs.getString("NOM_PRODUIT");
                 double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
                 int quantiteStock = rs.getInt("QUANTITE_STOCK");
-                cat.addProduit(nom, prixUnitaireHT, quantiteStock);
+//                cat.addProduit(nom, prixUnitaireHT, quantiteStock);
+                I_Produit produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+                listeProduit.add(produit);
             }
             seDeconnecter();
         }catch(SQLException e){
             e.printStackTrace();
         }
+        return listeProduit;
+    }
+
+    @Override
+    public I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException {
+        seConnecter();
+        st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = "+ nom);
+        ResultSet rs = st.getResultSet();
+        double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
+        int quantiteStock = rs.getInt("QUANTITE_STOCK");
+        I_Produit produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+        return produit;
     }
 
 }
