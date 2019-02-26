@@ -1,11 +1,9 @@
 package Modele;
+
 import Metier.I_Catalogue;
 import Metier.I_Produit;
-import Metier.Produit;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProduitDao {
 
@@ -31,7 +29,7 @@ public class ProduitDao {
        boolean result = true;
         try {
            seConnecter();
-           st.executeUpdate("INSERT INTO Gestprod_produit (nom, prix_UnitaireHT,quantite_Stock) VALUES (" + nom + "," + prixUnitaireHT + ", " + quantiteStock + ")");
+           st.executeUpdate("INSERT INTO GESTPROD_PRODUIT (NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK) VALUES (" + nom + "," + prixUnitaireHT + ", " + quantiteStock + ")");
            seDeconnecter();
        }catch(SQLException e){
            result = false;
@@ -55,7 +53,7 @@ public class ProduitDao {
         boolean result = true;
         try {
             seConnecter();
-            st.executeUpdate("DELETE FROM  Gestprod/produit WHERE nom = "+ nom);
+            st.executeUpdate("DELETE FROM  GESTPROD_PRODUIT WHERE NOM_PRODUIT = "+ nom);
             seDeconnecter();
         }catch(SQLException e){
             result = false;
@@ -71,14 +69,14 @@ public class ProduitDao {
             ResultSet rs = st.getResultSet();
 
             if(rs.next()){
-                String nom = rs.getString("nom");
-                double prixUnitaireHT = rs.getDouble("prix_UnitaireHT");
-                int quantiteStock = rs.getInt("quantite_Stock");
+                String nom = rs.getString("NOM_PRODUIT");
+                double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
+                int quantiteStock = rs.getInt("QUANTITE_STOCK");
                 cat.addProduit(nom, prixUnitaireHT, quantiteStock);
             }
             seDeconnecter();
         }catch(SQLException e){
-
+            e.printStackTrace();
         }
         return listeProduit;
     }
