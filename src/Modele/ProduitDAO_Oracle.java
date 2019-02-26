@@ -37,7 +37,6 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         try {
            seConnecter();
            st.executeUpdate("CALL GESTPROD_ADDPRODUCT(" + produit.getNom() + "," + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
-           st.executeQuery("commit");
            seDeconnecter();
        }catch(SQLException e){
            result = false;
