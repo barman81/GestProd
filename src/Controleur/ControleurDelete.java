@@ -2,6 +2,9 @@ package Controleur;
 
 import Affichage.FenetrePrincipale;
 import Metier.I_Catalogue;
+import Metier.I_Produit;
+
+import java.sql.SQLException;
 
 public class ControleurDelete {
     static I_Catalogue cat = FenetrePrincipale.cat;
@@ -10,7 +13,9 @@ public class ControleurDelete {
         return cat.getNomProduits();
     }
 
-    public static void supprimerProduit(String nom){
+    public static void supprimerProduit(String nom) throws SQLException, ClassNotFoundException {
         cat.removeProduit(nom);
+        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nom);
+        FenetrePrincipale.produitDAO.deleteProduit(produit);
     }
 }

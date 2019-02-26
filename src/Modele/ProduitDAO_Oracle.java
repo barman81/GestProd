@@ -36,11 +36,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
        boolean result = true;
         try {
            seConnecter();
-           CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_ADDPRODUCT (?,?,?)");
-           callableStatement.setString(1, produit.getNom());
-           callableStatement.setDouble(2, produit.getPrixUnitaireHT());
-           callableStatement.setInt(3, produit.getQuantite());
-           callableStatement.executeQuery();
+           st.executeUpdate("CALL GESTPROD_ADDPRODUCT(" + produit.getNom() + "," + produit.getPrixUnitaireHT() + ", " + produit.getQuantite() + ")");
            seDeconnecter();
        }catch(SQLException e){
            result = false;
@@ -53,12 +49,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
-            PreparedStatement preparedStatement = cn.prepareStatement("UPDATE GESTPROD_PRODUIT(NOM_PRODUIT = ?, PRIX_UNITAIRE_HT = ?,QUANTITE_STOCK =  ");
-            preparedStatement.setString(1, produit.getNom());
-            preparedStatement.setDouble(2, produit.getPrixUnitaireHT());
-            preparedStatement.setInt(3, produit.getQuantite());
-            preparedStatement.executeQuery();
-            //st.executeUpdate("UPDATE GESTPROD_PRODUIT( NOM_PRODUIT  = " + produit.getNom()+ ", QUANTITE_STOCK = " + produit.getQuantite() + ")");
+            st.executeUpdate("UPDATE GESTPROD_PRODUIT( NOM_PRODUIT  = " + produit.getNom()+ ", PRIX_UNITAIRE_HT = " + produit.getPrixUnitaireHT() + ", QUANTITE_STOCK = " + produit.getQuantite() + ")");
             seDeconnecter();
         }catch(SQLException e){
             result = false;
