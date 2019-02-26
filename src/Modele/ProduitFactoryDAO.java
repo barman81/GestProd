@@ -2,13 +2,13 @@ package Modele;
 
 public class ProduitFactoryDAO {
 
-    public static void createProduitDAO_Oracle(){
+    public static I_ProduitDAO createProduitDAO_Oracle(){
         //TODO: create produit DAO
-        new ProduitDAO_Oracle();
+        return new ProduitDAO_Oracle();
     }
 
-    public static void createProduitDAO_XML(){
-        new modele.ProduitDAO_XML();
+    public static I_ProduitDAO createProduitDAO_XML(){
+        return new AdapatateurDAO_XML();
     }
 
 }
