@@ -53,12 +53,10 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
-            PreparedStatement preparedStatement = cn.prepareStatement("UPDATE GESTPROD_PRODUIT(NOM_PRODUIT = ?, PRIX_UNITAIRE_HT = ?,QUANTITE_STOCK =  ");
-            preparedStatement.setString(1, produit.getNom());
-            preparedStatement.setDouble(2, produit.getPrixUnitaireHT());
-            preparedStatement.setInt(3, produit.getQuantite());
-            preparedStatement.executeQuery();
-            //st.executeUpdate("UPDATE GESTPROD_PRODUIT( NOM_PRODUIT  = " + produit.getNom()+ ", QUANTITE_STOCK = " + produit.getQuantite() + ")");
+            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_UPDATEPRODUCT (?,?)");
+            callableStatement.setString(1, produit.getNom());
+            callableStatement.setInt(2, produit.getQuantite());
+            callableStatement.executeQuery();
             seDeconnecter();
         }catch(SQLException e){
             result = false;
@@ -71,7 +69,9 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
-            st.executeUpdate("DELETE FROM  GESTPROD_PRODUIT WHERE NOM_PRODUIT = "+ produit.getNom());
+            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_DELETEPRODUCT (?)");
+            callableStatement.setString(1, produit.getNom());
+            callableStatement.executeQuery();
             seDeconnecter();
         }catch(SQLException e){
             result = false;
@@ -91,7 +91,6 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
                 String nom = rs.getString("NOM_PRODUIT");
                 double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
                 int quantiteStock = rs.getInt("QUANTITE_STOCK");
-//                cat.addProduit(nom, prixUnitaireHT, quantiteStock);
                 I_Produit produit = new Produit(nom, prixUnitaireHT, quantiteStock);
                 listeProduits.add(produit);
             }
@@ -105,11 +104,16 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     @Override
     public I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException {
         seConnecter();
-        st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = "+ nom);
-        ResultSet rs = st.getResultSet();
-        double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
-        int quantiteStock = rs.getInt("QUANTITE_STOCK");
-        I_Produit produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+        I_Produit produit = null;
+        PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = ?");
+        preparedStatement.setString(1, nom);
+        preparedStatement.executeQuery();
+        ResultSet rs = preparedStatement.getResultSet();
+        if(rs.next()) {
+            double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
+            int quantiteStock = rs.getInt("QUANTITE_STOCK");
+            produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+        }
         return produit;
     }
 
