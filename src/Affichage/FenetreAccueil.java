@@ -1,8 +1,13 @@
 package Affichage;
 import Controleur.ControleurCatalogue;
+import Controleur.ControleurCreate;
+import Metier.Catalogue;
+import Metier.I_Catalogue;
+import Modele.CatalogueFactoryDAO;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -93,6 +98,11 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 			String texteAjout = txtAjouter.getText();
 			if (!texteAjout.equals(""))
 			{
+				try {
+					ControleurCatalogue.newCatalogue(texteAjout);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
 				System.out.println("ajouter le catalogue "+texteAjout);
 				txtAjouter.setText(null);
 			}
@@ -100,8 +110,15 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 		if (e.getSource() == btSupprimer)
 		{
 			String texteSupprime = (String)cmbSupprimer.getSelectedItem();
-			if (texteSupprime != null)
-				System.out.println("supprime catalogue "+texteSupprime);
+			if (texteSupprime != null) {
+				try {
+					ControleurCatalogue.supprimerCatalogue(texteSupprime);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
+			}
 		}
 		if (e.getSource() == btSelectionner)
 		{

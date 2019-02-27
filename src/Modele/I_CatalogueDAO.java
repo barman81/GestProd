@@ -15,4 +15,6 @@ public interface I_CatalogueDAO {
     List<I_Catalogue> getListeCatalogues() throws ClassNotFoundException;
 
     int getNbProduits(String nom);
+
+    I_Catalogue getCatalogue(String texteSupprime);
 }

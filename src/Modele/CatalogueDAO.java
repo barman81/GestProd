@@ -1,5 +1,6 @@
 package Modele;
 
+import Controleur.ControleurCatalogue;
 import Metier.Catalogue;
 import Metier.I_Catalogue;
 
@@ -97,6 +98,28 @@ public class CatalogueDAO implements I_CatalogueDAO{
             e.printStackTrace();
         }
         return nb;
+    }
+
+    @Override
+    public I_Catalogue getCatalogue(String nom) {
+        I_Catalogue catalogue =null;
+        try {
+            seConnecter();
+            PreparedStatement preparedStatement = cn.prepareStatement("select * from BARONM.GESTPROD_CATALOGUE where NOM_CATALOGUE =  ?");
+            preparedStatement.setString(1, nom);
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
+
+            if(rs.next()){
+                catalogue = new Catalogue(rs.getString("NOM_CATALOGUE"));
+            }
+            seDeconnecter();
+        }catch(SQLException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return catalogue;
     }
 
 

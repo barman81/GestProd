@@ -8,11 +8,12 @@ import Modele.I_CatalogueDAO;
 import Modele.I_ProduitDAO;
 import Modele.ProduitFactoryDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControleurCatalogue {
-    public ArrayList listeCata = new ArrayList();
+    public static ArrayList listeCata = new ArrayList();
     public static I_CatalogueDAO catalogueDAO = CatalogueFactoryDAO.createCatalogueDAO_Oracle();
     public static I_ProduitDAO produitDAO = ProduitFactoryDAO.createProduitDAO_Oracle();
     public static I_Catalogue leCatalogue;
@@ -24,7 +25,9 @@ public class ControleurCatalogue {
         for(I_Catalogue unCatalogue : listeCatalogue){
             tab[i] = unCatalogue.getNom();
             i++;
+            listeCata.add(unCatalogue);
         }
+
         return tab;
     }
 
@@ -44,5 +47,17 @@ public class ControleurCatalogue {
     public static int getNbCatalogue() throws ClassNotFoundException {
         List<I_Catalogue> listeCatalogue = catalogueDAO.getListeCatalogues();
         return listeCatalogue.size();
+    }
+
+    public static void newCatalogue(String nom) throws ClassNotFoundException {
+        I_Catalogue catalogue = new Catalogue(nom);
+        listeCata.add(catalogue);
+        catalogueDAO.addCatalogue(catalogue);
+    }
+
+    public static void supprimerCatalogue(String texteSupprime) throws SQLException, ClassNotFoundException {
+        I_Catalogue catalogue = catalogueDAO.getCatalogue(texteSupprime);
+        catalogueDAO.deleteCatalogue(catalogue);
+        listeCata.remove(catalogue);
     }
 }
