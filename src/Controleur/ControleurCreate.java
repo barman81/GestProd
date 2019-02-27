@@ -12,6 +12,6 @@ public class ControleurCreate {
     public static void acheterNouveauProduit(String nomProduit, double prix, int qte) throws ClassNotFoundException {
         I_Produit produit = new Produit(nomProduit, prix, qte);
         cat.addProduit(nomProduit, prix, qte);
-        FenetrePrincipale.produitDAO.addProduit(produit);
+        FenetrePrincipale.produitDAO.addProduit(produit, cat);
     }
 }

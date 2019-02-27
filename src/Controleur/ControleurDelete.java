@@ -15,7 +15,7 @@ public class ControleurDelete {
 
     public static void supprimerProduit(String nom) throws SQLException, ClassNotFoundException {
         cat.removeProduit(nom);
-        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nom);
-        FenetrePrincipale.produitDAO.deleteProduit(produit);
+        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nom, cat);
+        FenetrePrincipale.produitDAO.deleteProduit(produit, cat);
     }
 }

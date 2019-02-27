@@ -16,16 +16,16 @@ public class ControleurAchatVente {
 
     public static void vendreProduit(String nomProduit, int qte) throws SQLException, ClassNotFoundException {
         cat.vendreStock(nomProduit, qte);
-        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nomProduit);
+        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nomProduit, cat);
         produit.enlever(qte);
-        FenetrePrincipale.produitDAO.updateProduit(produit);
+        FenetrePrincipale.produitDAO.updateProduit(produit, cat);
     }
 
     public static void acheterStockProduit(String nomProduit, int qte) throws SQLException, ClassNotFoundException {
         cat.acheterStock(nomProduit, qte);
-        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nomProduit);
+        I_Produit produit = FenetrePrincipale.produitDAO.getUnProduit(nomProduit, cat);
         produit.ajouter(qte);
-        FenetrePrincipale.produitDAO.updateProduit(produit);
+        FenetrePrincipale.produitDAO.updateProduit(produit, cat);
     }
 
     public static String afficherQuantiteStock(){

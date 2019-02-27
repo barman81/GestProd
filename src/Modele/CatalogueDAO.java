@@ -62,7 +62,7 @@ public class CatalogueDAO implements I_CatalogueDAO{
         List<I_Catalogue> listeCatalogues = new ArrayList<>();
         try {
             seConnecter();
-            st.executeQuery("select * from BARONM.GESTPROD_CATALOGUES");
+            st.executeQuery("select * from BARONM.GESTPROD_CATALOGUES ");
             ResultSet rs = st.getResultSet();
 
             while(rs.next()){
@@ -82,8 +82,10 @@ public class CatalogueDAO implements I_CatalogueDAO{
         int nb = 0;
         try {
             seConnecter();
-            st.executeQuery("select COUNT(*) from BARONM.GESTPROD_PRODUITS8CATALOGUES where ID_CATALOGUE = (select ID_CATALOGUE FROM CATALOGUE WHERE NOM_CATALOGUE = "+ nom);
-            ResultSet rs = st.getResultSet();
+            PreparedStatement preparedStatement = cn.prepareStatement("select * from BARONM.GESTPROD_PRODUITS_CATALOGUES where ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = ?)");
+            preparedStatement.setString(1, nom);
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
 
             while(rs.next()){
                 nb++;

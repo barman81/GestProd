@@ -14,7 +14,7 @@ public interface I_ProduitDAO {
 
     boolean deleteProduit(I_Produit produit, I_Catalogue catalogue) throws SQLException, ClassNotFoundException;
 
-    List<I_Produit> getListeProduits() throws ClassNotFoundException;
+    List<I_Produit> getListeProduits(I_Catalogue catalogue) throws ClassNotFoundException;
 
-    I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException;
+    I_Produit getUnProduit(String nom, I_Catalogue catalogue) throws SQLException, ClassNotFoundException;
 }

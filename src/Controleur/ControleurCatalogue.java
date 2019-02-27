@@ -14,6 +14,8 @@ import java.util.List;
 public class ControleurCatalogue {
     public ArrayList listeCata = new ArrayList();
     public static I_CatalogueDAO catalogueDAO = CatalogueFactoryDAO.createCatalogueDAO_Oracle();
+    public static I_ProduitDAO produitDAO = ProduitFactoryDAO.createProduitDAO_Oracle();
+    public static I_Catalogue leCatalogue;
 
     public static String[] afficherLesCatalogue() throws ClassNotFoundException {
         List<I_Catalogue> listeCatalogue = catalogueDAO.getListeCatalogues();

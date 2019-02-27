@@ -12,27 +12,27 @@ import java.util.List;
 public class ProduitAdaptateurDAO_XML implements I_ProduitDAO{
     private ProduitDAO_XML produitDAO_xml = new ProduitDAO_XML();
     @Override
-    public boolean addProduit(I_Produit produit) throws ClassNotFoundException {
+    public boolean addProduit(I_Produit produit, I_Catalogue catalogue) throws ClassNotFoundException {
         return produitDAO_xml.creer(produit);
     }
 
     @Override
-    public boolean updateProduit(I_Produit produit) throws SQLException, ClassNotFoundException {
+    public boolean updateProduit(I_Produit produit, I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         return produitDAO_xml.maj(produit);
     }
 
     @Override
-    public boolean deleteProduit(I_Produit produit) throws SQLException, ClassNotFoundException {
+    public boolean deleteProduit(I_Produit produit,I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         return produitDAO_xml.supprimer(produit);
     }
 
     @Override
-    public List<I_Produit> getListeProduits() throws ClassNotFoundException {
+    public List<I_Produit> getListeProduits(I_Catalogue catalogue) throws ClassNotFoundException {
         return  produitDAO_xml.lireTous();
     }
 
     @Override
-    public I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException {
+    public I_Produit getUnProduit(String nom, I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         return produitDAO_xml.lire(nom);
     }
 }

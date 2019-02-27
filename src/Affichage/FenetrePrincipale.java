@@ -5,18 +5,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import Controleur.ControleurAchatVente;
+import Controleur.ControleurCatalogue;
 import Controleur.ControleurCreate;
-import Metier.Catalogue;
 import Metier.I_Catalogue;
 import Modele.I_ProduitDAO;
-import Modele.ProduitDAO_Oracle;
-import Modele.ProduitFactoryDAO;
 
 
 public class FenetrePrincipale extends JFrame implements ActionListener,
 		WindowListener {
-	public static I_ProduitDAO produitDAO = ProduitFactoryDAO.createProduitDAO_Oracle();
-//	public static I_Catalogue cat = new Catalogue();
+	public static I_ProduitDAO produitDAO = ControleurCatalogue.produitDAO;
+	public static I_Catalogue cat = ControleurCatalogue.leCatalogue;
 	private JButton btAfficher;
 	private JButton btNouveauProduit;
 	private JButton btSupprimerProduit;
@@ -28,7 +26,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 
 	
 	public FenetrePrincipale() throws ClassNotFoundException {
-//		cat.addProduits(produitDAO.getListeProduits());
+		cat.addProduits(produitDAO.getListeProduits(cat));
 		setTitle("exercice Produits");
 		setBounds(500, 500, 320, 250);
 		JPanel panAffichage = new JPanel();

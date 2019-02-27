@@ -83,11 +83,11 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 /////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public List<I_Produit> getListeProduits() throws ClassNotFoundException {
+    public List<I_Produit> getListeProduits(I_Catalogue catalogue) throws ClassNotFoundException {
         List<I_Produit> listeProduits = new ArrayList<>();
         try {
             seConnecter();
-            st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS");
+            st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = "+ catalogue.getNom());
             ResultSet rs = st.getResultSet();
 
             while(rs.next()){
@@ -105,17 +105,17 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public I_Produit getUnProduit(String nom) throws SQLException, ClassNotFoundException {
+    public I_Produit getUnProduit(String nomProduit, I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         seConnecter();
         I_Produit produit = null;
-        PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = ?");
-        preparedStatement.setString(1, nom);
+        PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = ? and ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = "+ catalogue.getNom());
+        preparedStatement.setString(1, nomProduit);
         preparedStatement.executeQuery();
         ResultSet rs = preparedStatement.getResultSet();
         if(rs.next()) {
             double prixUnitaireHT = rs.getDouble("PRIX_UNITAIRE_HT");
             int quantiteStock = rs.getInt("QUANTITE_STOCK");
-            produit = new Produit(nom, prixUnitaireHT, quantiteStock);
+            produit = new Produit(nomProduit, prixUnitaireHT, quantiteStock);
         }
         return produit;
     }
