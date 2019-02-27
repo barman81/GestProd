@@ -7,11 +7,12 @@ import java.util.*;
 
 public class Catalogue implements I_Catalogue {
 	private ArrayList<I_Produit> lesProduits = new ArrayList<I_Produit>();
-
+	private String nom;
 	/**
 	 * Constructeur qui instancie un nouveau catalogue pouvant contenir des produits.
 	 */
-	public Catalogue(){
+	public Catalogue(String nom){
+		this.nom = nom;
 	}
 
 	/**
@@ -151,6 +152,11 @@ public class Catalogue implements I_Catalogue {
 		}
 		Arrays.sort(noms);
 		return noms;
+	}
+
+	@Override
+	public String getNom() {
+		return this.nom;
 	}
 
 	/**

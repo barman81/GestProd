@@ -1,6 +1,9 @@
 package Affichage;
+import Controleur.ControleurCatalogue;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class FenetreAccueil extends JFrame implements ActionListener {
@@ -11,7 +14,7 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 	private JComboBox cmbSupprimer, cmbSelectionner;
 	private TextArea taDetailCatalogues;
 
-	public FenetreAccueil() {
+	public FenetreAccueil() throws ClassNotFoundException {
 		setTitle("Catalogues");
 		setBounds(500, 500, 200, 125);
 		Container contentPane = getContentPane();
@@ -74,12 +77,13 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 		btAjouter.addActionListener(this);
 		btSupprimer.addActionListener(this);
 		btSelectionner.addActionListener(this);
-		
-		String[] tab  = {"Formacia" , "Le Redoutable", "Noitaicossa"}; 
+
+
+		String[] tab  = ControleurCatalogue.afficherLesCatalogue();
 		modifierListesCatalogues(tab);
-		String[] tab2 = {"Formacia : 6 produits" , "Le Redoutable : 4 produits" , "Noitaicossa : 0 produits" };
+		String[] tab2 = ControleurCatalogue.nb_Produits_by_Catalogue();
 		modifierDetailCatalogues(tab2);
-		modifierNbCatalogues(3);
+		modifierNbCatalogues(ControleurCatalogue.getNbCatalogue());
 		setVisible(true);
 	}
 
@@ -134,7 +138,7 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 		new FenetreAccueil();
 	}
 }

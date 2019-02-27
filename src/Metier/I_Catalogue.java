@@ -11,6 +11,7 @@ public interface I_Catalogue {
 	public abstract boolean acheterStock(String nomProduit, int qteAchetee);
 	public abstract boolean vendreStock(String nomProduit, int qteVendue);
 	public abstract String[] getNomProduits();
+	public abstract String getNom();
 	public abstract double getMontantTotalTTC();
 	public abstract String toString();
 

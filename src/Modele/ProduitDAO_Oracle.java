@@ -32,14 +32,15 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public boolean addProduit(I_Produit produit) throws  ClassNotFoundException {
+    public boolean addProduit(I_Produit produit, I_Catalogue catalogue) throws  ClassNotFoundException {
         boolean result = true;
         try {
             seConnecter();
-            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_ADDPRODUCT (?,?,?)");
+            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_ADDPRODUCTCATALOGUE(?,?,?,?)");
             callableStatement.setString(1, produit.getNom());
             callableStatement.setDouble(2, produit.getPrixUnitaireHT());
             callableStatement.setInt(3, produit.getQuantite());
+            callableStatement.setString(4, catalogue.getNom());
             callableStatement.executeQuery();
             seDeconnecter();
         }catch(SQLException e){
@@ -49,13 +50,14 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public boolean updateProduit(I_Produit produit) throws SQLException, ClassNotFoundException {
+    public boolean updateProduit(I_Produit produit, I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         boolean result = true;
         try {
             seConnecter();
-            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_UPDATEPRODUCT (?,?)");
+            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_UPDATEPRODUCTCAT(?,?,?)");
             callableStatement.setString(1, produit.getNom());
             callableStatement.setInt(2, produit.getQuantite());
+            callableStatement.setString(3, catalogue.getNom());
             callableStatement.executeQuery();
             seDeconnecter();
         }catch(SQLException e){
@@ -65,12 +67,13 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     }
 
     @Override
-    public boolean deleteProduit(I_Produit produit) throws SQLException, ClassNotFoundException {
+    public boolean deleteProduit(I_Produit produit, I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         boolean result = true;
         try {
             seConnecter();
-            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_DELETEPRODUCT (?)");
+            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_DELETEPRODUCT (?,?)");
             callableStatement.setString(1, produit.getNom());
+            callableStatement.setString(2, catalogue.getNom());
             callableStatement.executeQuery();
             seDeconnecter();
         }catch(SQLException e){
@@ -78,7 +81,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         }
         return result;
     }
-
+/////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public List<I_Produit> getListeProduits() throws ClassNotFoundException {
         List<I_Produit> listeProduits = new ArrayList<>();

@@ -16,7 +16,7 @@ import Modele.ProduitFactoryDAO;
 public class FenetrePrincipale extends JFrame implements ActionListener,
 		WindowListener {
 	public static I_ProduitDAO produitDAO = ProduitFactoryDAO.createProduitDAO_Oracle();
-	public static I_Catalogue cat = new Catalogue();
+//	public static I_Catalogue cat = new Catalogue();
 	private JButton btAfficher;
 	private JButton btNouveauProduit;
 	private JButton btSupprimerProduit;
@@ -28,7 +28,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener,
 
 	
 	public FenetrePrincipale() throws ClassNotFoundException {
-		cat.addProduits(produitDAO.getListeProduits());
+//		cat.addProduits(produitDAO.getListeProduits());
 		setTitle("exercice Produits");
 		setBounds(500, 500, 320, 250);
 		JPanel panAffichage = new JPanel();

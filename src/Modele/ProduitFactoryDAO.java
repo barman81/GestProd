@@ -7,7 +7,7 @@ public class ProduitFactoryDAO {
     }
 
     public static I_ProduitDAO createProduitDAO_XML(){
-        return new AdaptateurDAO_XML();
+        return new ProduitAdaptateurDAO_XML();
     }
 
 }
