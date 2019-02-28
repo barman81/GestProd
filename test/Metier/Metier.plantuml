@@ -1,0 +1,108 @@
+@startuml
+
+title __METIER's Class Diagram__\n
+
+  package Metier {
+    class CatalogueTest {
+        + setUp()
+        + testConstructeurCatalogue()
+        + testAddProduitIProduit_null()
+        + testAddProduitIProduit_unProduit()
+        + testAddProduitIProduit_deuxProduits()
+        + testAddProduitIProduit_deuxFoisMemeProduitConsecutif()
+        + testAddProduitIProduit_deuxFoisMemeProduitNonConsecutif()
+        + testAddProduitIProduit_deuxFoisProduitMemeNomConsecutif()
+        + testAddProduitIProduit_deuxFoisProduitMemeNomNonConsecutif()
+        + testAddProduitIProduit_deuxFoisProduitMemeNomEspacesAuDebut()
+        + testAddProduitIProduit_deuxFoisProduitMemeNomTabulationsAuDebut()
+        + testAddProduitIProduit_deuxFoisProduitMemeNomEspacesALaFin()
+        + testAddProduitIProduit_deuxFoisProduitMemeNomTabulationsALaFin()
+        + testAddProduitIProduit_stockNegatif()
+        + testAddProduitIProduit_stockNul()
+        + testAddProduitIProduit_prixNul()
+        + testAddProduitIProduit_prixNegatif()
+        + testAddProduitStringDoubleInt_unProduit()
+        + testAddProduitStringDoubleInt_deuxProduit()
+        + testAddProduitStringDoubleInt_deuxFoisMemeNomConsecutif()
+        + testAddProduitStringDoubleInt_deuxFoisMemeNomNonConsecutif()
+        + testAddProduitStringDoubleInt_deuxFoisProduitMemeNomEspacesAuDebut()
+        + testAddProduitStringDoubleInt_deuxFoisProduitMemeNomTabulationsAuDebut()
+        + testAddProduitStringDoubleInt_deuxFoisProduitMemeNomEspacesALaFin()
+        + testAddProduitStringDoubleInt_deuxFoisProduitMemeNomTabulationsALaFin()
+        + testAddProduitStringDoubleInt_stockNegatif()
+        + testAddProduitStringDoubleInt_stockNul()
+        + testAddProduitStringDoubleInt_prixNul()
+        + testAddProduitStringDoubleInt_prixNegatif()
+        + testAddProduits_null()
+        + testAddProduits_vide()
+        + testAddProduits_produitsSansDoublonsAvecCatalogueVide()
+        + testAddProduits_produitsSansDoublonsAvecCatalogueDejaRempli()
+        + testAddProduits_produitsAvecUnSeulDoublon()
+        + testAddProduits_produitsAvecCertainsDoublons()
+        + testAddProduits_produitsAvecQueDesDoublons()
+        + testAddProduits_produitsAvecNomsDoublons()
+        + testAddProduits_produitsAvecDoublonsNomProduitsEspacesAuDebut()
+        + testAddProduits_produitsAvecDoublonsNomProduitsTabulationsAuDebut()
+        + testAddProduits_produitsAvecDoublonsNomProduitsEspacesALaFin()
+        + testAddProduits_produitsAvecDoublonsNomProduitsTabulationsALaFin()
+        + testAddProduits_avecStocksNegatifs()
+        + testAddProduits_avecStocksNull()
+        + testAddProduits_avecPrixNul()
+        + testAddProduits_avecPrixNegatif()
+        + testRemoveProduit_existe()
+        + testRemoveProduit_existePas()
+        + testRemoveProduit_null()
+        + testAcheterProduit_existePas()
+        + testAcheterProduit_existe()
+        + testAcheterProduit_quantiteNegative()
+        + testAcheterProduit_quantiteNulle()
+        + testVendreProduit_existePas()
+        + testVendreProduit_existe()
+        + testVendreProduit_quantiteNegative()
+        + testVendreProduit_quantiteNulle()
+        + testVendreProduit_stockNul()
+        + testVendreProduit_stockInsuffisant()
+        + testGetNomProduits_vide()
+        + testGetNomProduits_unProduit()
+        + testGetNomProduits_unProduitAvecNomEspacesAuDebut()
+        + testGetNomProduits_unProduitAvecNomEspacesALaFin()
+        + testGetNomProduits_unProduitAvecNomEspacesAuMilieu()
+        + testGetNomProduits_unProduitAvecNomTabulationsAuDebut()
+        + testGetNomProduits_unProduitAvecNomTabulationsALaFin()
+        + testGetNomProduits_unProduitAvecNomTabulationsAuMilieu()
+        + testGetNomProduits_deuxProduits()
+        + testGetNomProduits_plusieursProduitsInseresOrdreAlphabetique()
+        + testGetNomProduits_plusieursProduitsInseresOrdreAleatoire()
+        + testMontantTotalTTC_catalogueVide()
+        + testMontantTotalTTC_pasDeStock()
+        + testMontantTotalTTC_sansVirgule()
+        + testMontantTotalTTC_avecVirgule_SansArrondi_UnChiffreApresLaVirgule()
+        + testMontantTotalTTC_avecVirgule_SansArrondi_DeuxChiffresApresLaVirgule()
+        + testMontantTotalTTC_avecVirgule_AvecArrondiInferieur_TroisChiffresApresLaVirgule()
+        + testMontantTotalTTC_avecVirgule_AvecArrondiSuperieur_TroisChiffresApresLaVirgule()
+        + testMontantTotalTTC_avecVirgule_AvecArrondiSuperieur_TroisChiffresApresLaVirgule_IlNeFautPasArrondirLePrixDuStockUnitaireMaisLePrixDuStockTotal()
+        + testToString_CatalogueVide()
+        + testToString_CatalogueAvecDesProduits_TotalAvecAucunChiffreApresVirgule()
+        + testToString_CatalogueAvecDesProduits_AvecDesEspaceDansLesNomsDesProduit()
+        + testToString_CatalogueAvecDesProduits_AvecDesTabulationsDansLesNomsDesProduit()
+        + testToString_CatalogueAvecDesProduits_TotalAvecUnChiffreApresVirgule()
+        + testToString_CatalogueAvecDesProduits_TotalAvecDeuxChiffresApresVirgule()
+        + testToString_CatalogueAvecDesProduits_TotalAvecTroisChiffresApresVirguleArrondiInferieur()
+        + testToString_CatalogueAvecDesProduits_TotalAvecTroisChiffresApresVirguleArrondiSuperieur()
+        + testClear()
+        - createProduit()
+    }
+  }
+  
+
+  CatalogueTest o-- I_Catalogue : cat
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
