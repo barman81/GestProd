@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CatalogueDAO_XML implements I_CatalogueDAO {
     private String uri = "C:/Catalogues.xml";
-    private Document doc;
+    private Document doc ;
 
     public CatalogueDAO_XML() {
         SAXBuilder sdoc = new SAXBuilder();
@@ -58,6 +58,7 @@ public class CatalogueDAO_XML implements I_CatalogueDAO {
 
     @Override
     public List<I_Catalogue> getListeCatalogues() throws ClassNotFoundException {
+        new CatalogueDAO_XML();
         List<I_Catalogue> l = new ArrayList<I_Catalogue>();
         try {
             Element root = doc.getRootElement();
@@ -79,8 +80,12 @@ public class CatalogueDAO_XML implements I_CatalogueDAO {
     }
 
     @Override
-    public I_Catalogue getCatalogue(String texteSupprime) {
-        return null;
+    public I_Catalogue getCatalogue(String nomCata) {
+        Element e = chercheProduit(nomCata);
+        if (e != null)
+            return new Catalogue(e.getAttributeValue("nom"));
+        else
+            return null;
     }
 
     private boolean sauvegarde() {
@@ -96,6 +101,18 @@ public class CatalogueDAO_XML implements I_CatalogueDAO {
     }
 
     private Element chercheCatalogue(String nom) {
+        Element root = doc.getRootElement();
+        List<Element> lProd = root.getChildren("catalogue");
+        int i = 0;
+        while (i < lProd.size() && !lProd.get(i).getAttributeValue("nom").equals(nom))
+            i++;
+        if (i < lProd.size())
+            return lProd.get(i);
+        else
+            return null;
+    }
+
+    private Element chercheProduit(String nom) {
         Element root = doc.getRootElement();
         List<Element> lProd = root.getChildren("catalogue");
         int i = 0;

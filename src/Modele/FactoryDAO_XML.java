@@ -8,6 +8,7 @@ public class FactoryDAO_XML implements FabriqueAbstraite{
     }
 
     public I_CatalogueDAO createCatalogueDAO(){
-        return null;
+        CatalogueDAO_XML catalogueDAO_xml = new CatalogueDAO_XML();
+        return new CatalogueDAO_XML();
     }
 }

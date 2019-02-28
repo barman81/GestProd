@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ControleurCatalogue {
     public static ArrayList listeCata = new ArrayList();
-    public static FabriqueAbstraite factoryDAO = new FactoryDAO_Oracle();
+    public static FabriqueAbstraite factoryDAO = new FactoryDAO_Oracle(); // changer ORACLE en XML pour passer de la bdd au xml
     public static I_CatalogueDAO catalogueDAO = factoryDAO.createCatalogueDAO();
     public static I_ProduitDAO produitDAO = factoryDAO.createProduitDAO();
     public static I_Catalogue leCatalogue;
