@@ -1,14 +1,9 @@
 package Affichage;
 import Controleur.ControleurCatalogue;
-import Controleur.ControleurCreate;
-import Metier.Catalogue;
-import Metier.I_Catalogue;
-import Modele.CatalogueFactoryDAO;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class FenetreAccueil extends JFrame implements ActionListener {
@@ -100,11 +95,17 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 			{
 				try {
 					ControleurCatalogue.newCatalogue(texteAjout);
+					String[] tab  = ControleurCatalogue.afficherLesCatalogue();
+					modifierListesCatalogues(tab);
+					String[] tab2 = ControleurCatalogue.nb_Produits_by_Catalogue();
+					modifierDetailCatalogues(tab2);
+					modifierNbCatalogues(ControleurCatalogue.getNbCatalogue());
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				}
 				System.out.println("ajouter le catalogue "+texteAjout);
 				txtAjouter.setText(null);
+
 			}
 		}
 		if (e.getSource() == btSupprimer)
@@ -113,20 +114,35 @@ public class FenetreAccueil extends JFrame implements ActionListener {
 			if (texteSupprime != null) {
 				try {
 					ControleurCatalogue.supprimerCatalogue(texteSupprime);
+					String[] tab  = ControleurCatalogue.afficherLesCatalogue();
+					modifierListesCatalogues(tab);
+					String[] tab2 = ControleurCatalogue.nb_Produits_by_Catalogue();
+					modifierDetailCatalogues(tab2);
+					modifierNbCatalogues(ControleurCatalogue.getNbCatalogue());
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				}
+
 			}
 		}
 		if (e.getSource() == btSelectionner)
 		{
-			String texteSelection = (String)cmbSupprimer.getSelectedItem();
+			String texteSelection = (String)cmbSelectionner.getSelectedItem();
 			if (texteSelection != null) 
 			{
+				try {
+					ControleurCatalogue.getCatalogue(texteSelection);
+					new FenetrePrincipale();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
 				System.out.println("selectionne catalogue "+texteSelection);
 				this.dispose();
+
 			}
 		}	
 	}

@@ -36,11 +36,20 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
+
+
+            PreparedStatement preparedStatement = cn.prepareStatement("select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = ?");
+            preparedStatement.setString(1, catalogue.getNom());
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
+            rs.next();
+            int idCata = rs.getInt("ID_CATALOGUE");
+
             CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_ADDPRODUCTCATALOGUE(?,?,?,?)");
             callableStatement.setString(1, produit.getNom());
-            callableStatement.setDouble(2, produit.getPrixUnitaireHT());
-            callableStatement.setInt(3, produit.getQuantite());
-            callableStatement.setString(4, catalogue.getNom());
+            callableStatement.setDouble(3, produit.getPrixUnitaireHT());
+            callableStatement.setInt(2, produit.getQuantite());
+            callableStatement.setInt(4, idCata);
             callableStatement.executeQuery();
             seDeconnecter();
         }catch(SQLException e){
@@ -71,7 +80,7 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         boolean result = true;
         try {
             seConnecter();
-            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_DELETEPRODUCT (?,?)");
+            CallableStatement callableStatement = cn.prepareCall("CALL GESTPROD_DELETEPRODUCTCAT(?,?)");
             callableStatement.setString(1, produit.getNom());
             callableStatement.setString(2, catalogue.getNom());
             callableStatement.executeQuery();
@@ -81,14 +90,16 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
         }
         return result;
     }
-/////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public List<I_Produit> getListeProduits(I_Catalogue catalogue) throws ClassNotFoundException {
         List<I_Produit> listeProduits = new ArrayList<>();
         try {
             seConnecter();
-            st.executeQuery("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = "+ catalogue.getNom());
-            ResultSet rs = st.getResultSet();
+            PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS_CATALOGUES where ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = ?)");
+            preparedStatement.setString(1, catalogue.getNom());
+            preparedStatement.executeQuery();
+            ResultSet rs = preparedStatement.getResultSet();
 
             while(rs.next()){
                 String nom = rs.getString("NOM_PRODUIT");
@@ -108,8 +119,9 @@ public class ProduitDAO_Oracle implements I_ProduitDAO{
     public I_Produit getUnProduit(String nomProduit, I_Catalogue catalogue) throws SQLException, ClassNotFoundException {
         seConnecter();
         I_Produit produit = null;
-        PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS where NOM_PRODUIT = ? and ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = "+ catalogue.getNom());
+        PreparedStatement preparedStatement = cn.prepareStatement("select NOM_PRODUIT, PRIX_UNITAIRE_HT, QUANTITE_STOCK from BARONM.GESTPROD_PRODUITS_CATALOGUES where NOM_PRODUIT = ? and ID_CATALOGUE = (select ID_CATALOGUE FROM BARONM.GESTPROD_CATALOGUES WHERE NOM_CATALOGUE = ?)");
         preparedStatement.setString(1, nomProduit);
+        preparedStatement.setString(2, catalogue.getNom());
         preparedStatement.executeQuery();
         ResultSet rs = preparedStatement.getResultSet();
         if(rs.next()) {

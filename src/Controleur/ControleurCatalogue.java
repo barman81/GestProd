@@ -1,12 +1,8 @@
 package Controleur;
 
-import Affichage.FenetrePrincipale;
 import Metier.Catalogue;
 import Metier.I_Catalogue;
-import Modele.CatalogueFactoryDAO;
-import Modele.I_CatalogueDAO;
-import Modele.I_ProduitDAO;
-import Modele.ProduitFactoryDAO;
+import Modele.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,8 +10,9 @@ import java.util.List;
 
 public class ControleurCatalogue {
     public static ArrayList listeCata = new ArrayList();
-    public static I_CatalogueDAO catalogueDAO = CatalogueFactoryDAO.createCatalogueDAO_Oracle();
-    public static I_ProduitDAO produitDAO = ProduitFactoryDAO.createProduitDAO_Oracle();
+    public static FabriqueAbstraite factoryDAO = new FactoryDAO_Oracle();
+    public static I_CatalogueDAO catalogueDAO = factoryDAO.createCatalogueDAO();
+    public static I_ProduitDAO produitDAO = factoryDAO.createProduitDAO();
     public static I_Catalogue leCatalogue;
 
     public static String[] afficherLesCatalogue() throws ClassNotFoundException {
@@ -55,9 +52,14 @@ public class ControleurCatalogue {
         catalogueDAO.addCatalogue(catalogue);
     }
 
-    public static void supprimerCatalogue(String texteSupprime) throws SQLException, ClassNotFoundException {
-        I_Catalogue catalogue = catalogueDAO.getCatalogue(texteSupprime);
+    public static void supprimerCatalogue(String nom) throws SQLException, ClassNotFoundException {
+        I_Catalogue catalogue = catalogueDAO.getCatalogue(nom);
         catalogueDAO.deleteCatalogue(catalogue);
+        listeCata.remove(catalogue);
+    }
+    public static void getCatalogue(String nom) throws SQLException, ClassNotFoundException {
+        I_Catalogue catalogue = catalogueDAO.getCatalogue(nom);
+        leCatalogue = catalogue;
         listeCata.remove(catalogue);
     }
 }

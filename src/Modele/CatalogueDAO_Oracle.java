@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CatalogueDAO implements I_CatalogueDAO{
+public class CatalogueDAO_Oracle implements I_CatalogueDAO{
 
     private final String url = "jdbc:oracle:thin:@162.38.222.149:1521:iut";
     private final String login = "baronm";
@@ -105,7 +105,7 @@ public class CatalogueDAO implements I_CatalogueDAO{
         I_Catalogue catalogue =null;
         try {
             seConnecter();
-            PreparedStatement preparedStatement = cn.prepareStatement("select * from BARONM.GESTPROD_CATALOGUE where NOM_CATALOGUE =  ?");
+            PreparedStatement preparedStatement = cn.prepareStatement("select * from BARONM.GESTPROD_CATALOGUES where NOM_CATALOGUE =  ?");
             preparedStatement.setString(1, nom);
             preparedStatement.executeQuery();
             ResultSet rs = preparedStatement.getResultSet();
